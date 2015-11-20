@@ -61,7 +61,7 @@ body {
 }
 
 .subHeaderBanner {
-  background-image: url('../../public/assets/images/food-one.jpg');
+  background-image: url('http://s27.postimg.org/4h2d62bgi/food_one.jpg');
   background-position: center;
   background-size: cover;
   height: 300px;
@@ -111,8 +111,8 @@ body {
   position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   width: 40%;
-  height: 100vh;
   overflow-y: scroll;
 }
 
