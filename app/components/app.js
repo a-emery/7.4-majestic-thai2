@@ -46,7 +46,7 @@ var App = React.createClass({
           <h1 className="headerTitle">Majestic Thai</h1>
           <h4 className="headerSubtitle">est. 2015</h4>
           <ul className="headerList">
-            <li className="headerListItem"><a href="">Menu</a></li>
+            <li className="headerListItem active"><a href="">Menu</a></li>
             <li className="headerListItem"><a href="">Reservations</a></li>
             <li className="headerListItem"><a href="">Events</a></li>
             <li className="headerListItem"><a href="">Contact</a></li>
