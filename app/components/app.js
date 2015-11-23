@@ -48,7 +48,8 @@ var App = React.createClass({
     });
     store.submitOrder({
       order: order,
-      timeSubmitted: moment().format('MMMM Do YYYY, h:mm:ss a')
+      timeSubmitted: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      total: this.totalPrice()
     });
     this.props.order.fetch();
   },
