@@ -18,6 +18,15 @@ export default {
 
   getOrder() {
     return order;
+  },
+
+  submitOrder(newOrder) {
+    // console.log(order);
+    order.create(newOrder);
+  },
+
+  resetOrder() {
+    var order = new OrderCollection();
   }
 
 };

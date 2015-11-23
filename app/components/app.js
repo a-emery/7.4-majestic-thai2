@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import store from '../store';
 import Sticky from 'react-sticky';
+import moment from 'moment';
 
 import MenuItem from '../components/menuItem';
 import OrderItem from '../components/orderItem';
@@ -36,6 +37,20 @@ var App = React.createClass({
       }
     }
     return total.toFixed(2);
+  },
+
+  saveOrder() {
+    var order = [];
+    this.props.order.toJSON().map((i)=> {
+      if(i.name){
+        order = order.concat({name: i.name, price: i.price});
+      }
+    });
+    store.submitOrder({
+      order: order,
+      timeSubmitted: moment().format('MMMM Do YYYY, h:mm:ss a')
+    });
+    this.props.order.fetch();
   },
 
   render() {
@@ -74,6 +89,7 @@ var App = React.createClass({
             <h2>Current Order:</h2>
             {this.props.order.toJSON().map((o)=><OrderItem key={Math.random()} {...o}/>)}
             <p>Total: {this.total}</p>
+            <button onClick={this.saveOrder}>Submit Order</button>
           </div>
         </Sticky>
       </div>
