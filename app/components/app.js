@@ -88,7 +88,7 @@ var App = React.createClass({
         <Sticky className="orderContainer" stickyClass="orderContainerSticky" stickyStyle={{}}>
           <div>
             <h2>Current Order:</h2>
-            {this.props.order.toJSON().map((o)=><OrderItem key={Math.random()} {...o}/>)}
+            {this.props.order.toJSON().map((o)=><div key={Math.random()}><OrderItem {...o} order={this.props.order} /></div>)}
             <p>Total: {this.total}</p>
             <button onClick={this.saveOrder}>Submit Order</button>
           </div>
