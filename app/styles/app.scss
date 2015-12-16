@@ -128,3 +128,30 @@ body {
 .subtotalP {
   display: inline-block;
 }
+
+.confirmContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, .4);
+}
+
+.confirmBox {
+  background: rgba(247, 247, 241, 1);
+  width: 600px;
+  max-height: 500px;
+  padding: 20px 40px;
+  margin: 50px auto 0 auto;
+  overflow: scroll;
+}
+
+.confirmBox h2 {
+  margin-top: 0;
+}
+
+.confirmBoxCancel {
+  margin: 0 20px;
+}

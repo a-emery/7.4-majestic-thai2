@@ -20,6 +20,12 @@ var App = React.createClass({
     };
   },
 
+  getInitialState() {
+    return {
+      submitted: false,
+    };
+  },
+
   componentWillMount() {
     this.props.entrees.on('add remove change', this.forceUpdate.bind(this, null), this);
     this.props.entrees.fetch();
@@ -52,6 +58,21 @@ var App = React.createClass({
       total: this.totalPrice()
     });
     this.props.order.fetch();
+    this.setState({
+      submitted: false
+    });
+  },
+
+  toggleConfirm() {
+    if(!this.state.submitted){
+      this.setState({
+        submitted: true
+      });
+    } else if (this.state.submitted){
+      this.setState({
+        submitted: false
+      });
+    }
   },
 
   render() {
@@ -85,12 +106,23 @@ var App = React.createClass({
 
           </div>
         </div>
+        {this.state.submitted &&
+          <div className="confirmContainer">
+            <div className="confirmBox">
+                <h2>Confirm Order:</h2>
+                {this.props.order.toJSON().map((o)=><div key={Math.random()}><OrderItem {...o} order={this.props.order} /></div>)}
+                <p>Total: {this.total}</p>
+                <button onClick={this.saveOrder}>Submit Order</button>
+                <button className="confirmBoxCancel" onClick={this.toggleConfirm}>Cancel</button>
+            </div>
+          </div>
+        }
         <Sticky className="orderContainer" stickyClass="orderContainerSticky" stickyStyle={{}}>
           <div>
             <h2>Current Order:</h2>
             {this.props.order.toJSON().map((o)=><div key={Math.random()}><OrderItem {...o} order={this.props.order} /></div>)}
             <p>Total: {this.total}</p>
-            <button onClick={this.saveOrder}>Submit Order</button>
+            <button onClick={this.toggleConfirm}>Submit Order</button>
           </div>
         </Sticky>
       </div>
